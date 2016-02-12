@@ -13,7 +13,7 @@
 #   String.  Version of artifactory to be installed or latest/present
 #   Default: latest
 #
-# [*java_version
+# [*java_version*}
 #   String.  Version of java be installed or latest/present
 #   Default: latest
 #
