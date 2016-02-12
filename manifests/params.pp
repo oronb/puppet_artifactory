@@ -2,11 +2,11 @@
 class artifactory::params {
 	$user                        = "artifactory"
 	$group                       = "artifactory"
-	$version                     = hiera('artifactory::params::version','4.4.3')
-	$java_version                = hiera('artifactory::params::java_version', '8')
+	$version                     = artifactory::init::version
+	$java_version                = artifactory::init::java_version
 	$source                      = "/tmp"
 	$destination                 = "/opt/jfrog/artifactory"
-	$package_artifactory_ensure  = "installed"
+	$package_ensure              = artifactory::init::package_ensure
 
         if ($version =~ /^2/) or ($version =~ /^3/) {      #Check syntax
            $artifactory_type = 'old'
