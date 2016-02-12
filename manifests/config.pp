@@ -25,7 +25,7 @@ class artifactory::config (
     group   => artifactory,
     mode    => '0444',
     content => template('artifactory/server.xml.erb'),
-    #notify  => Class['artifactory::service'],
+    notify  => Class['artifactory::service'],
   }
 
   file { "/etc${destination}/default":
@@ -33,5 +33,6 @@ class artifactory::config (
     owner   => artifactory,
     group   => artifactory,
     content => template('artifactory/default.erb')
+    notify  => Class['artifactory::service']
   }
 }
