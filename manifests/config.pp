@@ -4,13 +4,13 @@
 #
 #
 # === Authors
-#
+#   Oron Boerman <oronb:orong1234@gmail.com
 # * Justin Lambert <mailto:jlambert@letsevenup.com>
 
 class artifactory::config (
 
   $ajp_port           = $::artifactory::ajp_port,
-  $version            = $artifactory::params::version,
+  $version            = $::artifactory::version,
   $destination        = $artifactory::params::destination,
 
 ) inherits artifactory::params {
