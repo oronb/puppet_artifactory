@@ -6,26 +6,26 @@ class artifactory::params {
 	$java_version                = artifactory::init::java_version
 	$source                      = "/tmp"
 	$destination                 = "/opt/jfrog/artifactory"
-	$package_ensure              = artifactory::init::package_ensure
+	$ensure                      = artifactory::init::ensure
 
-        if ($version =~ /^2/) or ($version =~ /^3/) {      #Check syntax
-           $artifactory_type = 'old'
+        if ($version =~ /^2/) or ($version =~ /^3/) {    
+           $artifactory_type = 'undef'
         }
 	else {
    	   $artifactory_type = hiera('artifactory::params::artifactory_type', 'oss') 
         }
 
 	case $java_version {
-	      '7': {    $Xms           = hiera('artifactory::params::Xms', '512m')
-		        $Xmx           = hiera('artifactory::params::Xmx', '2g')
-		        $Xss           = hiera('artifactory::params::Xss', '256k')
-	      		$PermSize      = hiera('artifactory::params::PermSize', '128m')
-	    	        $MaxPermSize   = hiera('artifactory::params::MaxPermSize', '256m') 
+	      '7': {    $Xms           = '512m'
+		        $Xmx           = '2g'
+		        $Xss           = '256k'
+	      		$PermSize      = '128m'
+	    	        $MaxPermSize   = '256m' 
               }
 
-	      '8': {    $Xms           = hiera('artifactory::params::Xms', '512m')
-	                $Xmx           = hiera('artifactory::params::Xmx', '2g')
-	                $Xss           = hiera('artifactory::params::Xss', '256k') 
+	      '8': {    $Xms           = '512m'
+	                $Xmx           = '2g'
+	                $Xss           = '256k' 
 	      }	
 	}
   
@@ -57,7 +57,7 @@ class artifactory::params {
 	                   $package_artifactory_name    = "jfrog-artifactory-${artifactory_type}"
 	                   $repo_source                 = "http://jfrog.bintray.com/artifactory-${repo_type}s/jfrog-artifactory-${artifactory_type}-${version}.${repo_type}"
 	                 }
-	                 if  $artifactory_type == "old" { 
+	                 if  $artifactory_type == "unef" { 
 	                   $package_artifactory_name    = "artifactory"
 	                   $repo_source                 = "http://jfrog.bintray.com/artifactory-${repo_type}s/artifactory-${version}.${repo_type}"
 	                }
