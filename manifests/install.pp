@@ -7,7 +7,7 @@ class artifactory::install (
   $group                          = $artifactory::params::group,
   $source                         = $artifactory::params::source,
   $destination                    = $artifactory::params::destination,
-  $package_artifactory_ensure     = $artifactory::params::package_artifactory_ensure,
+  $ensure                         = $artifactory::params::ensure,
   $package_artifactory_name       = $artifactory::params::package_artifactory_name,
   $repo_type                      = $artifactory::params::repo_type,
   $repo_source                    = $artifactory::params::repo_source,
@@ -41,10 +41,10 @@ class artifactory::install (
     require => Package['wget'],
   } 
 
- if $artifactory_type == "old" {
+ if $artifactory_type == "undef" {
     package { "${package_artifactory_name}":
       provider => "${repo_provider}",
-      ensure   => 'latest',
+      ensure   => ${ensure},
       source   => "/tmp/${package_artifactory_name}-${version}.${repo_type}",
       require  => Exec["download ${package_artifactory_name}"]
     }
@@ -52,7 +52,7 @@ class artifactory::install (
  else { 
          package { "${package_artifactory_name}":
          provider => "${repo_provider}",
-         ensure   => 'latest',
+         ensure   => ${ensure}",
          source   => "/tmp/${package_artifactory_name}-${version}.${repo_type}",
          require  => Exec["download ${package_artifactory_name}"]
          }   
