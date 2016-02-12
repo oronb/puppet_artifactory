@@ -2,8 +2,7 @@
 class artifactory::params {
 	$user                        = "artifactory"
 	$group                       = "artifactory"
-	$version                     = artifactory::init::version
-	$java_version                = artifactory::init::java_version
+	$java_version                = $::java_version
 	$source                      = "/tmp"
 	$destination                 = "/opt/jfrog/artifactory"
 	$ensure                      = artifactory::init::ensure
