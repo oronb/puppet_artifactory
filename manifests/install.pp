@@ -52,7 +52,7 @@ class artifactory::install (
  else { 
          package { "${package_artifactory_name}":
          provider => "${repo_provider}",
-         ensure   => ${ensure}",
+         ensure   => "${ensure}",
          source   => "/tmp/${package_artifactory_name}-${version}.${repo_type}",
          require  => Exec["download ${package_artifactory_name}"]
          }   
