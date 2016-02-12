@@ -25,15 +25,10 @@
 # * Justin Lambert <mailto:jlambert@letsevenup.com>
 #
 class artifactory(
- # $ensure           = 'latest',
- # $package_provider = undef,
- # $package_source   = undef,
+  $ensure           = 'latest',
+  $version          = 4.4.3
   $ajp_port         = 8019,
-  $data_path        = '/var/opt/jfrog/artifactory/data',
- # $backup_path      = undef,
 ) {
-
-  #include ::java
   
   class { 'artifactory::java': } ->
   class { 'artifactory::install': } ->
