@@ -28,9 +28,9 @@
 # * Justin Lambert <mailto:jlambert@letsevenup.com>
 #
 class artifactory(
-  $ensure           = 'latest
-  $version          = 4.4.3
-  $java_vesrion     = 8
+  $ensure           = 'latest',
+  $version          = 4.4.3,
+  $java_vesrion     = 8,
   $ajp_port         = 8019,
 ) {
   
