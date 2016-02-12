@@ -2,11 +2,11 @@
 class artifactory::params {
 	$user                        = "artifactory"
 	$group                       = "artifactory"
-	$java_version                = $::java_version
+	$version                     = $::artifactory::version
+	$java_version                = $::artifactory::java_version
 	$source                      = "/tmp"
 	$destination                 = "/opt/jfrog/artifactory"
-	$ensure                      = artifactory::init::ensure
-
+	
         if ($version =~ /^2/) or ($version =~ /^3/) {    
            $artifactory_type = 'undef'
         }
