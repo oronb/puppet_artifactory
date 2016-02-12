@@ -11,7 +11,7 @@
 #
 # [*version*]
 #   String.  Version of artifactory to be installed or latest/present
-#   Default: present
+#   Default: latest
 #
 # [*java_version
 #   String.  Version of java be installed or latest/present
@@ -28,7 +28,7 @@
 # * Justin Lambert <mailto:jlambert@letsevenup.com>
 #
 class artifactory(
-  $ensure           = 'present
+  $ensure           = 'latest
   $version          = 4.4.3
   $java_vesrion     = 8
   $ajp_port         = 8019,
